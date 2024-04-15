@@ -15,3 +15,20 @@ public class LibraryItem
         CreatedDate = createdDate ?? DateTime.Now;
     }
 }
+
+public class Book : LibraryItem
+{
+    public string Title { get; set; }
+
+    public Book(string title, DateTime? createdDate = null) : base(title, createdDate)
+    {
+        Title = title;
+    }
+}
+
+public class User : LibraryItem
+{
+    public User(string name, DateTime? createdDate = null) : base(name, createdDate)
+    {
+    }
+}
