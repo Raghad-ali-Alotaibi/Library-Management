@@ -1,8 +1,10 @@
 namespace LibraryManagement;
-public class Book
+public class Book : BaseClass
 {
-    public double Id { get; set; }
     public string Title { get; set; }
-    public DateTime CreatedDate { get; set; }
 
+    public Book(string title, DateTime? createdDate = null) : base(title, createdDate)
+    {
+        Title = title;
+    }
 }
