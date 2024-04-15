@@ -23,10 +23,18 @@ internal class Program
         library.AddUser(user3);
         library.AddUser(user4);
 
-        library.AddUser(user4);  // print (already exists in the Library)
-        library.DeleteUserById(user1.Id); // Delete User
-        library.GetAllUsers();
-        library.FindUsersByName("Julia");
+        // print (already exists in the Library)
+        library.AddUser(user4);
+        // Delete User
+        library.DeleteUserById(user1.Id);
+        // Print Get All Users
+        foreach (var user in library.GetAllUsers())
+        {
+            Console.WriteLine($"User: {user.Name}, Created Date: {user.CreatedDate}");
+        }
+        // Find Users By Name
+        Console.WriteLine($"{library.FindUsersByName("Julia")}");
+
 
         // Adding Books
         library.AddBook(book1);
@@ -34,12 +42,15 @@ internal class Program
         library.AddBook(book3);
         library.AddBook(book4);
 
-        library.AddBook(book4); // print (already exists in the Library)
-        library.DeleteBookById(book2.Id); // Delete Book
-        library.GetAllBooks();
-        library.FindBooksByTitle("Anna Karenina");
-
-
-
+        // Delete Book 
+        library.DeleteBookById(book2.Id);
+        // Print Get All Books
+        foreach (var book in library.GetAllBooks())
+        {
+            Console.WriteLine($"Book: {book.Title}, Created Date: {book.CreatedDate}");
+        }
+        // Find Books By Title
+        Console.WriteLine($"{library.FindBooksByTitle("Anna Karenina")}");
     }
 }
+

@@ -16,6 +16,17 @@ public class LibraryItem
     }
 }
 
+public class User : LibraryItem
+{
+    public User(string name, DateTime? createdDate = null) : base(name, createdDate)
+    {
+    }
+    public override string ToString()
+    {
+        return $"User Name: {Name} , Id: {Id} , Created Date: {CreatedDate} ";
+    }
+}
+
 public class Book : LibraryItem
 {
     public string Title { get; set; }
@@ -24,11 +35,10 @@ public class Book : LibraryItem
     {
         Title = title;
     }
-}
-
-public class User : LibraryItem
-{
-    public User(string name, DateTime? createdDate = null) : base(name, createdDate)
+    public override string ToString()
     {
+        return $"Book Title: {Title} , Id: {Id} , Created Date: {CreatedDate} ";
     }
 }
+
+

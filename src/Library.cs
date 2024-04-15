@@ -39,7 +39,6 @@ public class Library
                 throw new Exception($"'{user.Name}' is already exists in the Library.");
             }
             users.Add(user);
-            Console.WriteLine("User was added successfully");
         }
         catch (Exception e)
         {
@@ -57,14 +56,12 @@ public class Library
                 throw new Exception($"'{book.Title}' is already exists in the Library.");
             }
             books.Add(book);
-            Console.WriteLine("User was added successfully");
         }
         catch (Exception e)
         {
             Console.WriteLine("The Exception: " + e.Message);
         }
     }
-
 
     public void DeleteUserById(Guid id)
     {
