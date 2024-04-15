@@ -1,5 +1,5 @@
 namespace LibraryManagement;
-public class Book : BaseClass
+public class Book : LibraryItem
 {
     public string Title { get; set; }
 
