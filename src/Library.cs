@@ -5,6 +5,45 @@ public class Library
     private List<Book> books = new List<Book>();
     private List<User> users = new List<User>();
 
+
+
+    public void AddUser(User user)
+    {
+        try
+        {
+            bool isIdExist = users.Any(newId => newId.Id == user.Id);
+            if (isIdExist)
+            {
+                throw new Exception($"'{user.Name}' is already exists in the Library.");
+            }
+            users.Add(user);
+            Console.WriteLine("User was added successfully");
+        }
+        catch (Exception e)
+        {
+            Console.WriteLine("The Exception: " + e.Message);
+        }
+    }
+
+    public void AddBook(Book book)
+    {
+        try
+        {
+            bool isIdExist = books.Any(newId => newId.Id == book.Id);
+            if (isIdExist)
+            {
+                throw new Exception($"'{book.Title}' is already exists in the Library.");
+            }
+            books.Add(book);
+            Console.WriteLine("User was added successfully");
+        }
+        catch (Exception e)
+        {
+            Console.WriteLine("The Exception: " + e.Message);
+        }
+    }
+
+
     public void DeleteUserById(Guid id)
     {
         try
