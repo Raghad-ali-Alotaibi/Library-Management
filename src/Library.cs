@@ -2,10 +2,32 @@ namespace LibraryManagement;
 
 public class Library
 {
-    private List<Book> books = new List<Book>();
     private List<User> users = new List<User>();
+    private List<Book> books = new List<Book>();
+
+    public List<User> GetAllUsers()
+    {
+        return users.OrderBy(u => u.CreatedDate).ToList();
+    }
+
+    public List<Book> GetAllBooks()
+    {
+        return books.OrderBy(b => b.CreatedDate).ToList();
+    }
 
 
+    public User FindUsersByName(string name)
+    {
+        User userFind = users.FirstOrDefault(user => user.Name == name)!;
+        return userFind;
+    }
+
+    public Book FindBooksByTitle(string title)
+    {
+        Book bookFind = books.FirstOrDefault(book => book.Title == title)!;
+        return bookFind;
+    }
+    
 
     public void AddUser(User user)
     {
