@@ -19,49 +19,54 @@ internal class Program
         var book5 = new Book("The Brothers Karamazov", new DateTime(2024, 5, 1));
         var book6 = new Book("Don Quixote", new DateTime(2024, 6, 1));
 
-        var library = new Library();
+        
+        var emailService = new EmailNotificationService();
+        var smsService = new SMSNotificationService();
+
+        var libraryWithEmail = new Library(emailService);
+        var libraryWithSMS = new Library(smsService);
 
         // Adding Users
-        library.AddUser(user1);
-        library.AddUser(user2);
-        library.AddUser(user3);
-        library.AddUser(user4);
-        library.AddUser(user5);
-        library.AddUser(user6);
+        libraryWithEmail.AddUser(user1);
+        libraryWithEmail.AddUser(user2);
+        libraryWithEmail.AddUser(user3);
+
+        libraryWithSMS.AddUser(user4);
+        libraryWithSMS.AddUser(user5);
+        libraryWithSMS.AddUser(user6);
 
 
 
         // print (already exists in the Library)
-        library.AddUser(user4);
-        // Delete User
-        library.DeleteUserById(user1.Id);
+        libraryWithSMS.AddUser(user4);
         // Find Users By Name
-        Console.WriteLine($"{library.FindUsersByName("Julia")}");
+        Console.WriteLine($"{libraryWithSMS.FindUsersByName("Julia")}");
 
 
         // Adding Books
-        library.AddBook(book1);
-        library.AddBook(book2);
-        library.AddBook(book3);
-        library.AddBook(book4);
-        library.AddBook(book5);
-        library.AddBook(book6);
+        libraryWithSMS.AddBook(book1);
+        libraryWithSMS.AddBook(book2);
+        libraryWithSMS.AddBook(book3);
+        libraryWithSMS.AddBook(book4);
+        libraryWithSMS.AddBook(book5);
+        libraryWithSMS.AddBook(book6);
 
 
         // Delete Book 
-        library.DeleteBookById(book2.Id);
+        libraryWithSMS.DeleteBookById(book2.Id);
 
         // print Get All Books
         int page = 1;
         int pageSize = 3;
-        List<Book> books = library.GetAllBooks(page, pageSize);
+        List<Book> books = libraryWithSMS.GetAllBooks(page, pageSize);
         foreach (var book in books)
         {
             Console.WriteLine($"Book: {book.Title}, Created Date: {book.CreatedDate}");
         }
 
         // Find Books By Title
-        Console.WriteLine($"{library.FindBooksByTitle("Anna Karenina")}");
+        Console.WriteLine($"{libraryWithSMS.FindBooksByTitle("Anna Karenina")}");
+
+
     }
 }
-

@@ -4,7 +4,13 @@ public class Library
 {
     private List<User> users = new List<User>();
     private List<Book> books = new List<Book>();
+    public INotificationService Notification { get; }
 
+    // Constructor
+    public Library(INotificationService notification)
+    {
+        Notification = notification;
+    }
 
     public List<User> GetAllUsers(int page, int pageSize)
     {
@@ -37,9 +43,10 @@ public class Library
             bool isIdExist = users.Any(newId => newId.Id == user.Id);
             if (isIdExist)
             {
-                throw new Exception($"'{user.Name}' is already exists in the Library.");
+                Notification.SendNotificationOnFailure($"adding '{user.Name}'");
             }
             users.Add(user);
+            Notification.SendNotificationOnSuccess($"User '{user.Name}'");
         }
         catch (Exception e)
         {
@@ -54,9 +61,10 @@ public class Library
             bool isIdExist = books.Any(newId => newId.Id == book.Id);
             if (isIdExist)
             {
-                throw new Exception($"'{book.Title}' is already exists in the Library.");
+                Notification.SendNotificationOnFailure($"adding '{book.Title}'");
             }
             books.Add(book);
+            Notification.SendNotificationOnSuccess($"book '{book.Title}'");
         }
         catch (Exception e)
         {
