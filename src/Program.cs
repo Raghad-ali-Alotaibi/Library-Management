@@ -51,6 +51,7 @@ internal class Program
         // Delete Book 
         library.DeleteBookById(book2.Id);
 
+        // print Get All Books
         int page = 1;
         int pageSize = 3;
         List<Book> books = library.GetAllBooks(page, pageSize);
