@@ -5,14 +5,15 @@ public class Library
     private List<User> users = new List<User>();
     private List<Book> books = new List<Book>();
 
-    public List<User> GetAllUsers()
+
+    public List<User> GetAllUsers(int page, int pageSize)
     {
-        return users.OrderBy(u => u.CreatedDate).ToList();
+        return users.OrderBy(user => user.CreatedDate).Skip((page - 1) * pageSize).Take(pageSize).ToList();
     }
 
-    public List<Book> GetAllBooks()
+    public List<Book> GetAllBooks(int page, int pageSize)
     {
-        return books.OrderBy(b => b.CreatedDate).ToList();
+        return books.OrderBy(book => book.CreatedDate).Skip((page - 1) * pageSize).Take(pageSize).ToList();
     }
 
 
@@ -27,7 +28,7 @@ public class Library
         Book bookFind = books.FirstOrDefault(book => book.Title == title)!;
         return bookFind;
     }
-    
+
 
     public void AddUser(User user)
     {

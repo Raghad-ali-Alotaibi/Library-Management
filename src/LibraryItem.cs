@@ -18,8 +18,10 @@ public class LibraryItem
 
 public class User : LibraryItem
 {
+    
     public User(string name, DateTime? createdDate = null) : base(name, createdDate)
     {
+        Name = name;
     }
     public override string ToString()
     {
