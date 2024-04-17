@@ -43,10 +43,10 @@ public class Library
             bool isIdExist = users.Any(newId => newId.Id == user.Id);
             if (isIdExist)
             {
-                Notification.SendNotificationOnFailure($"adding '{user.Name}'");
+                Notification.SendNotificationOnFailure($"'{user.Name}' is already exists");
             }
             users.Add(user);
-            Notification.SendNotificationOnSuccess($"User '{user.Name}'");
+            Notification.SendNotificationOnSuccess($"User '{user.Name}' was added ");
         }
         catch (Exception e)
         {
@@ -61,10 +61,10 @@ public class Library
             bool isIdExist = books.Any(newId => newId.Id == book.Id);
             if (isIdExist)
             {
-                Notification.SendNotificationOnFailure($"adding '{book.Title}'");
+                Notification.SendNotificationOnFailure($"{book.Title}' is already exists");
             }
             books.Add(book);
-            Notification.SendNotificationOnSuccess($"book '{book.Title}'");
+            Notification.SendNotificationOnSuccess($"book '{book.Title}' was added ");
         }
         catch (Exception e)
         {
